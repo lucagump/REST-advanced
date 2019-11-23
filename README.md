@@ -3,7 +3,7 @@
 ## Model View Control
 <a href="https://techterms.com/definition/mvc">
 <img src="https://raw.githubusercontent.com/lucagump/REST-advanced/master/assets/mvc.png" 
-alt="Model View Controller" width="480" height="360"  /></a>
+alt="Model View Controller"/></a>
 
 <!-- ![](./assets/mvc.png) -->
 
