@@ -1,0 +1,38 @@
+{
+    "express": {
+        "port": "3333"
+    },
+    "mongodb": {
+        "address": "localhost",
+        "port": "27017",
+        "dbname": "RESTadvance",
+        "collections": "rpg-game"
+    },
+    "enemy": {
+        "name": "Golem",
+        "health_points": 14,
+        "equipment": null,
+        "power": 3,
+        "reward": {
+            "experience": 8
+        }
+    },
+    "player": {
+        "level": 0,
+        "health_points": 20,
+        "experience": 0,
+        "power": 9,
+        "equipment": {
+            "sword": {
+                "power": 9
+            },
+            "potion": {
+                "power": 10
+            }
+        },
+        "maxstats": {
+            "max_exp": 10,
+            "max_hp": 20
+        }
+    }
+}
