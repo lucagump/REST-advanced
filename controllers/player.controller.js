@@ -35,10 +35,11 @@ module.exports = {
             if (err) {
                 return (err);
             }
-            showPlayer(player)
+            // showPlayer(player)
             res.send(player)
                 // .status(500)
         })
+        console.log('\x1b[33mPlayer ' + req.body.name + ' Created\x1b[0m\n')
     },
 
     getPlayer: function(req, res) {

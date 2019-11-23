@@ -19,9 +19,6 @@ function notExist() {
 }
 
 module.exports = {
-    test: function() {
-        console.log("ciao")
-    },
     createEnemy: function(req, res) {
         let enemy = new Enemy({
             name: req.body.name,
@@ -37,10 +34,11 @@ module.exports = {
             if (err) {
                 return (err);
             }
-            showEnemy(enemy)
+            // showEnemy(enemy)
             res.send(enemy)
                 // .status(500)
         })
+        console.log('\x1b[33mEnemy ' + req.body.name + ' Created\x1b[0m\n')
     },
 
     getEnemy: function(req, res) {

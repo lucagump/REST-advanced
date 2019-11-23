@@ -1,3 +1,12 @@
+// __________ ________   ____ _________________________
+// \______   \\_____  \ |    |   \__    ___/\_   _____/
+//  |       _/ /   |   \|    |   / |    |    |    __)_ 
+//  |    |   \/    |    \    |  /  |    |    |        \
+//  |____|_  /\_______  /______/   |____|   /_______  /
+//         \/         \/                            \/ 
+//
+//   
+
 const express = require('express');
 const router = express.Router();
 
@@ -14,11 +23,12 @@ router.get('/products/:id', product_controller.getProduct)
 router.put('/:id/update', product_controller.updateProduct)
 router.delete('/:id/delete', product_controller.deleteProduct)
 
-router.post('/players/', player_controller.createPlayer) //ok
-router.get('/players/:id', player_controller.getPlayer) //ok
-router.post('/enemy', enemy_controller.createEnemy) //ok
-router.get('/enemy/:id', enemy_controller.getEnemy) //ok
-router.post('/encounters/', encounter_controller.createEncounter) //ok
+// Routes for RPG Game
+router.post('/players/', player_controller.createPlayer)
+router.get('/players/:id', player_controller.getPlayer)
+router.post('/enemy', enemy_controller.createEnemy)
+router.get('/enemy/:id', enemy_controller.getEnemy)
+router.post('/encounters/', encounter_controller.createEncounter)
 router.put('/encounters/', encounter_controller.actionEncounter)
 router.delete('/encounters/:id', encounter_controller.deleteEncounter)
 

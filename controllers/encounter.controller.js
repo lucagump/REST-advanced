@@ -27,16 +27,18 @@ module.exports = {
 
         Player.findById(req.body.player_id, function(err, player) {
             if (err) return next(err);
-            showDocument(player);
+            console.log('\x1b[33mPlayer Found\x1b[0m')
+                // showDocument(player);
             player_hp = player.health_points
         })
 
         Enemy.aggregate([{ $match: { health_points: { $lte: 121 } } }, { $sample: { size: 1 } }], function(err, enemy) {
             if (err) return next(err);
-            showDocument(enemy);
+            // showDocument(enemy);
             enemy_id = enemy[0]._id
             enemy_hp = enemy[0].health_points
             done = true
+            console.log('\x1b[33mEnemy Found\x1b[0m')
 
             let encounter = new Encounter({
                 player_id: req.body.player_id,
@@ -49,6 +51,7 @@ module.exports = {
                 if (err) {
                     return (err);
                 }
+                console.log('\x1b[31mEncounter Created\x1b[0m\n')
                 showDocument(encounter)
                 res.send(encounter)
                     // .status(500)
@@ -125,6 +128,7 @@ module.exports = {
     deleteEncounter: function(req, res) {
         Encounter.findByIdAndRemove(req.params.id, function(err) {
             if (err) return next(err);
+            console.log('\x1b[31mEncounter Deleted\x1b[0m')
             res.send("encounter deleted");
         })
     },
