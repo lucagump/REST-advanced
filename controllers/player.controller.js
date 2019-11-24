@@ -46,9 +46,16 @@ module.exports = {
                 health_points: 100 + returnRandomInt(-20, 20),
                 experience: 10 + returnRandomInt(-3, 3),
                 attack: 10 + returnRandomInt(-2, 2),
-                potions: {
-                    heal: [3, 10 + returnRandomInt(-2, 2)],
-                    strength: [1, 10 + returnRandomInt(-2, 2)]
+                equipment: {
+                    potions: [{
+                        name: 'heal',
+                        power: 10 + returnRandomInt(-2, 2),
+                        number: 3
+                    }],
+                    weapon: [{
+                        weapon: 'gun',
+                        attack: 10 + returnRandomInt(-2, 2)
+                    }]
                 }
             });
             player.save(function(err) {

@@ -8,14 +8,14 @@ function showDocument(document) {
 }
 
 //heal problem with insert in players
-function updateDbEncounter(encounter) {
+async function updateDbEncounter(encounter) {
     Encounter.findByIdAndUpdate(encounter._id, { $set: encounter }, function(err, encounter) {
         if (err) return err;
         console.log('\x1b[33mSaving Encounter\x1b[0m')
     });
 }
 
-function updateDbPlayer(player) {
+async function updateDbPlayer(player) {
     Player.findByIdAndUpdate(player._id, { $set: player }, function(err, player) {
         if (err) return err;
         console.log('\x1b[33mSaving Player\x1b[0m')
@@ -131,25 +131,25 @@ module.exports = {
                         if (encounter.enemy_hp <= 0) {
                             encounter.enemy_hp = 0
                             encounter.fight = false
-                            player.experience += enemy.reward.experience
-                            player.player_hp += enemy.reward.hp
-                            updateDbPlayer(player)
+                            player.experience += enemy.equipment.experience
+                            player.equipment.potions[0].number += enemy.equipment.potions[0].number
+                            await updateDbPlayer(player)
                             res.status(201).send('You Win!!!')
                         } else {
                             res.status(201).send(encounter)
                         }
-                        updateDbEncounter(encounter)
+                        await updateDbEncounter(encounter)
                         console.log(encounter)
                         break;
                     }
                 case 'heal':
                     {
                         //probabilmente sta funzione va messa in async 
-                        if (player.potions.heal[0] > 0) {
-                            encounter.player_hp += player.potions.heal[1]
-                            player.potions.heal[0] -= 1
-                            updateDbPlayer(player)
-                            updateDbEncounter(encounter)
+                        if (player.equipment.potions[0].number > 0) {
+                            encounter.player_hp += player.equipment.potions[0].power
+                            player.equipment.potions[0].number -= 1
+                            await updateDbPlayer(player)
+                            await updateDbEncounter(encounter)
 
                             res.status(201).send(encounter)
                         } else {

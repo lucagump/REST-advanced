@@ -44,13 +44,16 @@ module.exports = {
             let enemy = new Enemy({
                 name: req.body.name,
                 health_points: 100 + returnRandomInt(-20, 20),
-                equipment: "Sword",
-                reward: {
+                equipment: {
                     experience: 10 + returnRandomInt(-3, 3),
-                    hp: 10 + returnRandomInt(-2, 2)
+                    potions: [{
+                        name: 'heal',
+                        power: 10 + returnRandomInt(-2, 2),
+                        number: 3
+                    }]
                 }
             });
-
+            showEnemy(enemy);
             enemy.save(function(err) {
                 if (err) {
                     res.status(500).send('500 - Internal Error')
