@@ -16,7 +16,9 @@
                                          
 echo "Insert Player Topolino"
 http POST localhost:3333/players name=Topolino  
-                                                           
+http POST localhost:3333/players name=Topolin-o  
+http GET localhost:3333/players/----ID-----
+
 echo "Insert Player Pippo"
 http POST localhost:3333/players name=Pippo
 
@@ -24,16 +26,18 @@ echo "Insert Player Pluto"
 http POST localhost:3333/players name=Pluto
 
 echo "Insert Enemy Paperina"
-http POST localhost:3333/enemy name=Paperina  
+http POST localhost:3333/enemies name=Paperina  
+http POST localhost:3333/enemies name=Pa$perina 
+http GET localhost:3333/enemies/----ID-----
 
 echo "Insert Enemy Medusa"
-http POST localhost:3333/enemy name=Medusa
+http POST localhost:3333/enemies name=Medusa
 
-echo "Insert Player Sindrome"
-http POST localhost:3333/enemy name=Sindrome
+echo "Insert Enemy Sindrome"
+http POST localhost:3333/enemies name=Sindrome
 
-echo "Insert Player Yzma"
-http POST localhost:3333/enemy name=Yzma
+echo "Insert Enemy Yzma"
+http POST localhost:3333/enemies name=Yzma
 
 #   ___ ___ ___ _  _ _____ 
 #  | __|_ _/ __| || |_   _|
@@ -42,7 +46,9 @@ http POST localhost:3333/enemy name=Yzma
 #                         
 
 echo "Create Encounter"
-http POST localhost:3333/encounters player_id=ID
+http POST localhost:3333/encounters player_id=----ID-----
+http POST localhost:3333/encounters player_id=----WRONG_ID-----
+http GET localhost:3333/encounters/----ID-----
 
 echo "Action for the encounter"
 http PUT localhost:3333/encounters action=fight

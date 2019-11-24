@@ -24,12 +24,18 @@ router.put('/:id/update', product_controller.updateProduct)
 router.delete('/:id/delete', product_controller.deleteProduct)
 
 // Routes for RPG Game
+
 router.post('/players/', player_controller.createPlayer)
 router.get('/players/:id', player_controller.getPlayer)
-router.post('/enemy', enemy_controller.createEnemy)
-router.get('/enemy/:id', enemy_controller.getEnemy)
+router.delete('/players/:id', player_controller.deletePlayer)
+
+router.post('/enemies', enemy_controller.createEnemy)
+router.get('/enemies/:id', enemy_controller.getEnemy)
+router.delete('/enemies/:id', enemy_controller.deleteEnemy)
+
 router.post('/encounters/', encounter_controller.createEncounter)
-router.put('/encounters/', encounter_controller.actionEncounter)
+router.get('/encounters/:id', encounter_controller.getEncounter)
+router.put('/encounters/:id', encounter_controller.actionEncounter)
 router.delete('/encounters/:id', encounter_controller.deleteEncounter)
 
 module.exports = router;

@@ -10,7 +10,8 @@ const config = require('./config/config.json');
 // MongoDb and Express Config
 const options = {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 };
 const address = config.mongodb.address;
 const dbport = config.mongodb.port;
@@ -24,7 +25,7 @@ mongoose.connect(url, options);
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-console.log('\x1b[33m%s\x1b[0m', url);
+console.log('\n\n\x1b[33m%s\x1b[0m', url);
 
 
 // Set up Express
